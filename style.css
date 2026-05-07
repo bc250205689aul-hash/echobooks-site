@@ -66,13 +66,14 @@ html {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+
+  /* IMPORTANT */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* HOVER EFFECT */
 .card:hover, .book:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.18);
 }
 
 /* BOOK TITLE */
