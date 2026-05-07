@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EchoBooks</title>
+  <title>EchoBooks</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
-<header class="hero">
-<h1> EchoBooks</h1>
-<p>Discover books that change how you think, work, and live.</p>
-<a href="#books" class="btn">Explore Books</a>
+<!-- HERO -->
+<header class="hero" data-aos="fade-down">
+  <h1>📚 EchoBooks</h1>
+  <p>Discover books that change how you think, work, and live.</p>
+  <a href="#books" class="btn">Explore Books</a>
 </header>
 
-<section class="container">
+<!-- CATEGORIES -->
+<section class="container" data-aos="fade-up">
 
-<h2> Trending Categories</h2>
+  <h2>🔥 Trending Categories</h2>
 
-<div class="grid">
-<div class="card">Self Improvement</div>
-<div class="card">Money & Business</div>
-<div class="card">Productivity</div>
-<div class="card">Fiction</div>
-</div>
-
-</section>
-
-<section class="container" id="books">
-
-<h2> Featured Books</h2>
-
-<div class="book">
-<h3>Atomic Habits</h3>
-<p>Small habits → big life changes.</p>
-</div>
-
-<div class="book">
-<h3>Rich Dad Poor Dad</h3>
-<p>Learn how money really works.</p>
-</div>
-
-<div class="book">
-<h3>Deep Work</h3>
-<p>Focus in a distracted world.</p>
-</div>
+  <div class="grid">
+    <div class="card" data-aos="zoom-in">Self Improvement</div>
+    <div class="card" data-aos="zoom-in">Money & Business</div>
+    <div class="card" data-aos="zoom-in">Productivity</div>
+    <div class="card" data-aos="zoom-in">Fiction</div>
+  </div>
 
 </section>
 
-<footer>
-<p>© 2026 EchoBooks — Built for readers</p>
+<!-- BOOKS -->
+<section class="container" id="books" data-aos="fade-up">
+
+  <h2>📖 Featured Books</h2>
+
+  <div class="book" data-aos="fade-right">
+    <h3>Atomic Habits</h3>
+    <p>Small habits → big life changes.</p>
+  </div>
+
+  <div class="book" data-aos="fade-right">
+    <h3>Rich Dad Poor Dad</h3>
+    <p>Learn how money really works.</p>
+  </div>
+
+  <div class="book" data-aos="fade-right">
+    <h3>Deep Work</h3>
+    <p>Focus in a distracted world.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer data-aos="fade-up">
+  <p>© 2026 EchoBooks — Built for readers</p>
 </footer>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
 
 </body>
 </html>
