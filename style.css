@@ -5,12 +5,17 @@ body {
   color: #222;
 }
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 .hero h1 {
@@ -20,32 +25,35 @@ body {
 
 .hero p {
   font-size: 18px;
+  margin-top: 10px;
   opacity: 0.9;
 }
 
+/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 20px;
+  padding: 12px 22px;
   background: white;
   color: #1e3c72;
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* LAYOUT */
+/* SECTIONS */
 .container {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 50px auto;
   padding: 0 20px;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -56,15 +64,20 @@ body {
 .card, .book {
   background: white;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
 
 /* HOVER EFFECT */
 .card:hover, .book:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* BOOK TITLE */
+.book h3 {
+  margin-bottom: 5px;
 }
 
 /* FOOTER */
