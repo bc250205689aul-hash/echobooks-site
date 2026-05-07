@@ -1,75 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>EchoBooks</title>
+
+  <title>EchoBooks - Discover Books That Change Your Life</title>
+
+  <!-- SEO -->
+  <meta name="description" content="EchoBooks - Discover, read, and explore life-changing books.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- AOS CSS -->
+  <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
-<!-- HERO -->
-<header class="hero" data-aos="fade-down">
-  <h1>📚 EchoBooks</h1>
-  <p>Discover books that change how you think, work, and live.</p>
-  <a href="#books" class="btn">Explore Books</a>
+<!-- DARK MODE BUTTON -->
+<button class="dark-toggle">🌙</button>
+
+<!-- HERO (FULL SCREEN LANDING PAGE) -->
+<header class="hero-full" data-aos="fade-down">
+
+  <div class="hero-content">
+    <h1>EchoBooks</h1>
+    <p>Discover books that transform your mindset, productivity, and success.</p>
+
+    <a href="#books" class="btn">Explore Books</a>
+  </div>
+
 </header>
 
 <!-- CATEGORIES -->
-<section class="container" data-aos="fade-up">
+<section class="container section" data-aos="fade-up">
 
   <h2>🔥 Trending Categories</h2>
 
   <div class="grid">
+
     <div class="card" data-aos="zoom-in">Self Improvement</div>
     <div class="card" data-aos="zoom-in">Money & Business</div>
     <div class="card" data-aos="zoom-in">Productivity</div>
     <div class="card" data-aos="zoom-in">Fiction</div>
+
   </div>
 
 </section>
 
-<!-- BOOKS -->
-<section class="container" id="books" data-aos="fade-up">
+<!-- BOOK CAROUSEL WITH IMAGES -->
+<section class="container section" id="books" data-aos="fade-up">
 
   <h2>📖 Featured Books</h2>
 
-  <div class="book" data-aos="fade-right">
-    <h3>Atomic Habits</h3>
-    <p>Small habits → big life changes.</p>
-  </div>
+  <div class="carousel">
 
-  <div class="book" data-aos="fade-right">
-    <h3>Rich Dad Poor Dad</h3>
-    <p>Learn how money really works.</p>
-  </div>
+    <a href="book1.html" class="slide">
+      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f" />
+      <p>Atomic Habits</p>
+    </a>
 
-  <div class="book" data-aos="fade-right">
-    <h3>Deep Work</h3>
-    <p>Focus in a distracted world.</p>
+    <a href="book2.html" class="slide">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" />
+      <p>Rich Dad Poor Dad</p>
+    </a>
+
+    <a href="book3.html" class="slide">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" />
+      <p>Deep Work</p>
+    </a>
+
   </div>
 
 </section>
 
+<!-- BLOG PREVIEW -->
+<section class="container section" data-aos="fade-up">
+
+  <h2>📰 Latest Blog Posts</h2>
+
+  <div class="grid">
+
+    <a href="post1.html" class="card">How to Build Better Habits</a>
+    <a href="post2.html" class="card">Why Reading Changes Your Brain</a>
+    <a href="post3.html" class="card">Focus in a Distracted World</a>
+
+  </div>
+
+</section>
+
+<!-- FLOAT BUTTON -->
+<div class="floating-btn">+</div>
+
 <!-- FOOTER -->
-<footer data-aos="fade-up">
-  <p>© 2026 EchoBooks — Built for readers</p>
+<footer>
+  <p>© 2026 EchoBooks — Affiliate-ready book discovery platform</p>
 </footer>
 
-<!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- JS -->
+<script src="script.js"></script>
 
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 800,
-    once: true
-  });
+  AOS.init({ duration: 800, once: true });
 </script>
 
 </body>
