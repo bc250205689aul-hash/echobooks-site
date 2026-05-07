@@ -1,7 +1,11 @@
 body {
-  background: red !important;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f7fb;
+  color: #222;
 }
-/* HERO SECTION */
+
+/* HERO */
 .hero {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
@@ -16,7 +20,6 @@ body {
 
 .hero p {
   font-size: 18px;
-  margin-top: 10px;
   opacity: 0.9;
 }
 
@@ -26,19 +29,18 @@ body {
   padding: 12px 20px;
   background: white;
   color: #1e3c72;
-  border-radius: 8px;
   text-decoration: none;
+  border-radius: 8px;
   font-weight: bold;
 }
 
-/* MAIN CONTAINER */
+/* LAYOUT */
 .container {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -49,11 +51,10 @@ body {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
-/* BOOK BOXES */
 .book {
   background: white;
   padding: 15px;
