@@ -32,6 +32,11 @@ body {
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 /* LAYOUT */
@@ -47,20 +52,19 @@ body {
   gap: 15px;
 }
 
-.card {
+/* CARDS */
+.card, .book {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  text-align: center;
+  transition: all 0.3s ease;
 }
 
-.book {
-  background: white;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+/* HOVER EFFECT */
+.card:hover, .book:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 /* FOOTER */
@@ -69,20 +73,4 @@ footer {
   padding: 30px;
   font-size: 14px;
   color: gray;
-}
-.card, .book {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover, .book:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.btn {
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  transform: scale(1.05);
 }
