@@ -1,11 +1,12 @@
-document.querySelector(".dark-toggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+AOS.init({
+    once: true,
+    duration: 800
 });
 
-// click animation
-document.querySelectorAll(".card, .slide").forEach(el => {
-  el.addEventListener("click", () => {
-    el.style.transform = "scale(0.95)";
-    setTimeout(() => el.style.transform = "", 150);
-  });
-});
+function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    // Save preference in localStorage
+}
+
+// Simple carousel for featured if expanded
+console.log("%cEchoBooks loaded - Ready for high conversions", "color:#2563eb; font-size:13px");
