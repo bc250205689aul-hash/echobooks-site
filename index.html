@@ -1,111 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <title>EchoBooks - Discover Books That Change Your Life</title>
-
-  <!-- SEO -->
-  <meta name="description" content="EchoBooks - Discover, read, and explore life-changing books.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover life-changing books on self-improvement, productivity, habits, and business. Honest reviews, curated lists &amp; direct Amazon links to books that transform lives.">
+    <title>EchoBooks - Books That Change Your Life | Best Self-Improvement Reads</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #7c3aed;
+            --text: #1f2937;
+            --light: #f8fafc;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://source.unsplash.com/random/1920x1080/?bookshelf') center/cover no-repeat; }
+        .book-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .book-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+        .affiliate-btn { 
+            background: linear-gradient(135deg, #FF9900, #FFBB33);
+            color: #111;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .affiliate-btn:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgb(255 153 0 / 0.3); }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- NAV -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-violet-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📖</div>
+                <a href="index.html" class="text-2xl font-semibold tracking-tight">EchoBooks</a>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                <a href="books/best-self-improvement.html" class="hover:text-blue-600 transition">Best Books</a>
+                <a href="blog/" class="hover:text-blue-600 transition">Blog</a>
+                <a href="#categories" class="hover:text-blue-600 transition">Categories</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" class="p-2 hover:bg-slate-100 rounded-xl transition">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
+                <a href="#search" class="p-2 hover:bg-slate-100 rounded-xl transition"><i class="fas fa-search text-xl"></i></a>
+            </div>
+        </div>
+    </nav>
 
-<body>
+    <!-- HERO -->
+    <section class="hero h-screen flex items-center text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+            <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6 leading-none">
+                Books That<br>Change Your Life
+            </h1>
+            <p class="text-2xl md:text-3xl mb-10 text-slate-200 max-w-2xl mx-auto">
+                Curated self-improvement, productivity &amp; business books with honest insights
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#featured" 
+                   class="inline-flex items-center justify-center px-10 py-5 bg-white text-slate-900 rounded-3xl font-semibold text-xl hover:bg-slate-100 transition">
+                    Discover Books
+                </a>
+                <a href="blog/" 
+                   class="inline-flex items-center justify-center px-10 py-5 border-2 border-white rounded-3xl font-semibold text-xl hover:bg-white/10 transition">
+                    Read the Blog
+                </a>
+            </div>
+            <div class="mt-12 flex justify-center gap-8 text-sm">
+                <div class="flex items-center gap-2"><i class="fas fa-check"></i> 100% Free Guides</div>
+                <div class="flex items-center gap-2"><i class="fas fa-check"></i> Affiliate-supported</div>
+            </div>
+        </div>
+    </section>
 
-<!-- DARK MODE BUTTON -->
-<button class="dark-toggle">🌙</button>
+    <!-- FEATURED BOOKS -->
+    <section id="featured" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="text-blue-600 font-medium">HAND-PICKED</span>
+                <h2 class="text-5xl font-bold tracking-tight">Featured This Month</h2>
+            </div>
+            <a href="books/best-self-improvement.html" class="text-blue-600 hover:underline flex items-center gap-2">
+                View all <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
 
-<!-- HERO (FULL SCREEN LANDING PAGE) -->
-<header class="hero-full" data-aos="fade-down">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Book 1: Atomic Habits -->
+            <div class="book-card bg-white rounded-3xl overflow-hidden shadow-xl">
+                <img src="https://m.media-amazon.com/images/I/51S3T5Z4Q5L.jpg" alt="Atomic Habits by James Clear" class="w-full h-80 object-cover">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-semibold text-2xl">Atomic Habits</h3>
+                            <p class="text-slate-500">James Clear</p>
+                        </div>
+                        <span class="text-amber-500 text-sm font-medium">4.8 ★</span>
+                    </div>
+                    <p class="text-slate-600 line-clamp-3 mb-6">Tiny changes, remarkable results. The definitive guide to building good habits and breaking bad ones.</p>
+                    <a href="https://amazon.com/dp/0735211299?tag=YOURTAGHERE" target="_blank"
+                       class="affiliate-btn block text-center py-4 rounded-2xl text-lg">
+                        Buy on Amazon <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                    <a href="book-atomic-habits.html" class="text-center text-sm text-blue-600 mt-4 block hover:underline">Read full review →</a>
+                </div>
+            </div>
 
-  <div class="hero-content">
-    <h1>EchoBooks</h1>
-    <p>Discover books that transform your mindset, productivity, and success.</p>
+            <!-- Add 2 more similar cards for Deep Work, The Psychology of Money, etc. -->
+            <!-- ... (repeat pattern) -->
+        </div>
+    </section>
 
-    <a href="#books" class="btn">Explore Books</a>
-  </div>
+    <!-- CATEGORIES -->
+    <section id="categories" class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-4">Explore Categories</h2>
+            <p class="text-center text-slate-600 mb-12 max-w-md mx-auto">Find the perfect book for your current journey</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="books/best-self-improvement.html" class="group">
+                    <div class="bg-gradient-to-br from-violet-500 to-fuchsia-500 h-64 rounded-3xl flex items-end p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition"></div>
+                        <div>
+                            <span class="text-sm tracking-widest">SELF GROWTH</span>
+                            <h3 class="text-4xl font-bold">Self Improvement</h3>
+                        </div>
+                    </div>
+                </a>
+                <!-- More category cards -->
+            </div>
+        </div>
+    </section>
 
-</header>
+    <!-- BLOG PREVIEW -->
+    <section class="max-w-7xl mx-auto px-6 py-20 bg-slate-50">
+        <h2 class="text-4xl font-bold mb-12">Latest Insights</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <article class="bg-white rounded-3xl overflow-hidden">
+                <img src="https://source.unsplash.com/random/600x400/?habits" class="w-full h-56 object-cover">
+                <div class="p-8">
+                    <h3 class="font-semibold text-xl mb-3">How Atomic Habits Changed My Life in 90 Days</h3>
+                    <p class="text-slate-600 line-clamp-3">Practical takeaways and implementation guide from James Clear's masterpiece.</p>
+                    <a href="blog/how-to-build-habits.html" class="text-blue-600 text-sm mt-6 inline-block">Read more →</a>
+                </div>
+            </article>
+            <!-- More posts -->
+        </div>
+    </section>
 
-<!-- CATEGORIES -->
-<section class="container section" data-aos="fade-up">
+    <footer class="bg-slate-900 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p>&copy; 2026 EchoBooks.me • Affiliate links help support the site at no extra cost to you.</p>
+            <p class="text-xs mt-4">Amazon and the Amazon logo are trademarks of Amazon.com, Inc.</p>
+        </div>
+    </footer>
 
-  <h2>🔥 Trending Categories</h2>
-
-  <div class="grid">
-
-    <div class="card" data-aos="zoom-in">Self Improvement</div>
-    <div class="card" data-aos="zoom-in">Money & Business</div>
-    <div class="card" data-aos="zoom-in">Productivity</div>
-    <div class="card" data-aos="zoom-in">Fiction</div>
-
-  </div>
-
-</section>
-
-<!-- BOOK CAROUSEL WITH IMAGES -->
-<section class="container section" id="books" data-aos="fade-up">
-
-  <h2>📖 Featured Books</h2>
-
-  <div class="carousel">
-
-    <a href="book1.html" class="slide">
-      <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f" />
-      <p>Atomic Habits</p>
-    </a>
-
-    <a href="book2.html" class="slide">
-      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" />
-      <p>Rich Dad Poor Dad</p>
-    </a>
-
-    <a href="book3.html" class="slide">
-      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" />
-      <p>Deep Work</p>
-    </a>
-
-  </div>
-
-</section>
-
-<!-- BLOG PREVIEW -->
-<section class="container section" data-aos="fade-up">
-
-  <h2>📰 Latest Blog Posts</h2>
-
-  <div class="grid">
-
-    <a href="post1.html" class="card">How to Build Better Habits</a>
-    <a href="post2.html" class="card">Why Reading Changes Your Brain</a>
-    <a href="post3.html" class="card">Focus in a Distracted World</a>
-
-  </div>
-
-</section>
-
-<!-- FLOAT BUTTON -->
-<div class="floating-btn">+</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 EchoBooks — Affiliate-ready book discovery platform</p>
-</footer>
-
-<!-- JS -->
-<script src="script.js"></script>
-
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 800, once: true });
-</script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
