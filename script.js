@@ -1,12 +1,20 @@
-AOS.init({
-    once: true,
-    duration: 800
-});
+const firebaseConfig = { ... your config ... };
+firebase.initializeApp(firebaseConfig);
 
-function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
-    // Save preference in localStorage
+const auth = firebase.auth();
+
+// Google Login (Already easy)
+function googleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => alert("Logged in with Google!"))
+    .catch(error => alert(error.message));
 }
 
-// Simple carousel for featured if expanded
-console.log("%cEchoBooks loaded - Ready for high conversions", "color:#2563eb; font-size:13px");
+// Twitter Login
+function twitterLogin() {
+  const provider = new firebase.auth.TwitterAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => alert("Logged in with Twitter!"))
+    .catch(error => alert(error.message));
+}
