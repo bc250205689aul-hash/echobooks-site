@@ -3,64 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EchoBooks</title>
-  
+  <title>EchoBooks • Read • Listen • Discuss</title>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f8f9fa; }
-    button {
-      display: block;
-      width: 320px;
-      margin: 15px auto;
-      padding: 18px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
+    :root {
+      --primary: #6366f1;
+      --dark: #0f172a;
     }
-    .google { background: #DB4437; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1e2937;
+      line-height: 1.6;
+    }
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 28px; font-weight: 800; color: var(--primary); }
+    
+    .hero {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 20px;
+      margin: 15px;
+    }
   </style>
 </head>
 <body>
-  <h1>📖 EchoBooks</h1>
-  <p>Test Login</p>
 
-  <button onclick="googleLogin()">Login with Google</button>
+  <header>
+    <nav>
+      <div class="logo">EchoBooks</div>
+      <div id="nav-user" style="display:none;">
+        <span id="user-name"></span>
+        <button onclick="logout()" style="margin-left:15px;">Logout</button>
+      </div>
+    </nav>
+  </header>
 
-  <p id="status"></p>
+  <!-- Login Screen -->
+  <div id="login-screen">
+    <div class="hero">
+      <h1 style="font-size:3rem; margin-bottom:20px;">Welcome to EchoBooks</h1>
+      <p style="font-size:1.3rem; max-width:600px; margin:0 auto 40px;">Read • Listen to Audiobooks • Join Book Community</p>
+      <button onclick="googleLogin()" style="background:white; color:#1e2937; font-size:18px; padding:16px 40px; border:none; border-radius:50px; cursor:pointer;">
+        Continue with Google
+      </button>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="main-app" style="display:none; max-width:1200px; margin:0 auto; padding:30px;">
+    
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      
+      <!-- Sidebar -->
+      <div style="width:280px;">
+        <div class="card">
+          <h3>My Library</h3>
+          <button onclick="uploadBook()" style="width:100%; padding:12px; background:#6366f1; color:white; border:none; border-radius:8px; margin-top:10px;">
+            📤 Upload New Book
+          </button>
+        </div>
+        <div class="card">
+          <h3>Community</h3>
+          <button onclick="openChat()" style="width:100%; padding:12px; background:#22c55e; color:white; border:none; border-radius:8px;">
+            💬 Open Chat
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div style="flex:1;">
+        <h2>Discover Books</h2>
+        <!-- You can add book cards here later -->
+        <div class="card">
+          <h3>Ready to Listen?</h3>
+          <p>Upload a PDF and convert it to audiobook instantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    console.log("Script is running...");
-
+    // ============== YOUR FIREBASE CONFIG ==============
     const firebaseConfig = {
-       apiKey: "AIzaSyAEytklQ_refpkStisgVb6Bv7wZrHW7bMg",
-       authDomain: "echobooks-dc31b.firebaseapp.com",
-       projectId: "echobooks-dc31b",
-       storageBucket: "echobooks-dc31b.firebasestorage.app",
-       messagingSenderId: "565405056470",
-       appId: "1:565405056470:web:ab11970ea2c16452db3877",
-       measurementId: "G-4X7V7088ZB"
+      apiKey: "AIzaSyAEytklQ_refpkStisgVb6Bv7wZrHW7bMg",
+      authDomain: "echobooks-dc31b.firebaseapp.com",
+      projectId: "echobooks-dc31b",
+      storageBucket: "echobooks-dc31b.firebasestorage.app",
+      messagingSenderId: "565405056470",
+      appId: "1:565405056470:web:ab11970ea2c16452db3877",
+      measurementId: "G-4X7V7088ZB"
     };
+    // ================================================
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    function googleLogin() {
-      console.log("googleLogin function called");
-      document.getElementById("status").innerHTML = "Trying to login...";
+    // Check login status
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("main-app").style.display = "block";
+        document.getElementById("user-name").textContent = user.displayName || user.email;
+        document.getElementById("nav-user").style.display = "block";
+      }
+    });
 
+    function googleLogin() {
       const provider = new firebase.auth.GoogleAuthProvider();
-      
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          document.getElementById("status").innerHTML = "✅ Login Successful!";
-        })
-        .catch((error) => {
-          document.getElementById("status").innerHTML = "❌ Error: " + error.message;
-        });
+      auth.signInWithPopup(provider).catch(err => alert(err.message));
+    }
+
+    function logout() {
+      auth.signOut();
+      location.reload();
+    }
+
+    function uploadBook() {
+      alert("📤 Book Upload Feature Coming Next...");
+    }
+
+    function openChat() {
+      alert("💬 Community Chat Opening...");
     }
   </script>
 </body>
