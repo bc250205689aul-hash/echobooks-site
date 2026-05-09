@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoBooks</title>
+  
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f8f9fa; }
+    button {
+      display: block;
+      width: 320px;
+      margin: 15px auto;
+      padding: 18px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    .google { background: #DB4437; }
+  </style>
+</head>
+<body>
+  <h1>📖 EchoBooks</h1>
+  <p>Test Login</p>
+
+  <button onclick="googleLogin()">Login with Google</button>
+
+  <p id="status"></p>
+
+  <script>
+    console.log("Script is running...");
+
+    const firebaseConfig = {
+       apiKey: "AIzaSyAEytklQ_refpkStisgVb6Bv7wZrHW7bMg",
+       authDomain: "echobooks-dc31b.firebaseapp.com",
+       projectId: "echobooks-dc31b",
+       storageBucket: "echobooks-dc31b.firebasestorage.app",
+       messagingSenderId: "565405056470",
+       appId: "1:565405056470:web:ab11970ea2c16452db3877",
+       measurementId: "G-4X7V7088ZB"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function googleLogin() {
+      console.log("googleLogin function called");
+      document.getElementById("status").innerHTML = "Trying to login...";
+
+      const provider = new firebase.auth.GoogleAuthProvider();
+      
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          document.getElementById("status").innerHTML = "✅ Login Successful!";
+        })
+        .catch((error) => {
+          document.getElementById("status").innerHTML = "❌ Error: " + error.message;
+        });
+    }
+  </script>
+</body>
+</html>
