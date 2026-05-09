@@ -9,24 +9,74 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
   
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      text-align: center;
+      padding: 50px;
+    }
+    .btn {
+      display: block;
+      width: 320px;
+      margin: 12px auto;
+      padding: 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+    .google { background: #DB4437; }
+    .apple  { background: #000; }
+    .microsoft { background: #00A4EF; }
+    .twitter { background: #1DA1F2; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1> EchoBooks</h1>
-    <p>Sign in to continue</p>
+  <h1>📖 EchoBooks</h1>
+  <p>Sign in to continue</p>
 
-    <div class="login-box">
-      <button onclick="googleLogin()" class="btn google">Login with Google</button>
-      <button onclick="appleLogin()" class="btn apple">Login with Apple</button>
-      <button onclick="microsoftLogin()" class="btn microsoft">Login with Microsoft</button>
-      <button onclick="twitterLogin()" class="btn twitter">Login with Twitter</button>
-    </div>
+  <button onclick="googleLogin()" class="btn google">Login with Google</button>
+  <button onclick="appleLogin()" class="btn apple">Login with Apple</button>
+  <button onclick="microsoftLogin()" class="btn microsoft">Login with Microsoft</button>
+  <button onclick="twitterLogin()" class="btn twitter">Login with Twitter</button>
 
-    <p id="status"></p>
-  </div>
+  <p id="status" style="margin-top:30px; font-weight:bold;"></p>
 
-  <!-- Script at the bottom -->
-  <script src="script.js"></script>
+  <script>
+    // ================== PASTE YOUR FIREBASE CONFIG HERE ==================
+    const firebaseConfig = {
+      apiKey: "PASTE_YOUR_API_KEY_HERE",
+      authDomain: "echobooks.firebaseapp.com",
+      projectId: "echobooks",
+      storageBucket: "echobooks.appspot.com",
+      messagingSenderId: "123456789012",
+      appId: "1:123456789012:web:xxxxxxxxxxxxxxxxxxxx"
+    };
+    // ===================================================================
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function googleLogin() {
+      console.log("Button clicked");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          document.getElementById("status").innerHTML = "✅ Login Successful! Welcome " + result.user.displayName;
+          console.log("Success:", result.user.email);
+        })
+        .catch((error) => {
+          console.error(error);
+          document.getElementById("status").innerHTML = "❌ Error: " + error.message;
+        });
+    }
+
+    function appleLogin() { alert("Apple Login - Will work after proper setup"); }
+    function microsoftLogin() { alert("Microsoft Login - Will work after proper setup"); }
+    function twitterLogin() { alert("Twitter Login - Will work after proper setup"); }
+  </script>
 </body>
 </html>
