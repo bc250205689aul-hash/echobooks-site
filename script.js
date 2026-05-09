@@ -15,48 +15,40 @@ const firebaseConfig = {
   appId: "1:565405056470:web:ab11970ea2c16452db3877",
   measurementId: "G-4X7V7088ZB"
 };
+// ===========================================================
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 
-// ================== LOGIN FUNCTIONS ==================
-
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
-    .then((result) => {
-      alert("✅ Logged in successfully with Google!");
-      document.getElementById("user-info").innerHTML = `Welcome, ${result.user.displayName}`;
+    .then(() => {
+      document.getElementById("status").innerHTML = "✅ Successfully Logged In!";
     })
-    .catch((error) => alert("Error: " + error.message));
+    .catch(error => {
+      document.getElementById("status").innerHTML = "Error: " + error.message;
+    });
 }
 
 function appleLogin() {
   const provider = new firebase.auth.OAuthProvider('apple.com');
   auth.signInWithPopup(provider)
-    .then(() => alert("✅ Logged in with Apple!"))
-    .catch((error) => alert("Error: " + error.message));
+    .then(() => document.getElementById("status").innerHTML = "✅ Apple Login Successful")
+    .catch(error => document.getElementById("status").innerHTML = error.message);
 }
 
 function microsoftLogin() {
   const provider = new firebase.auth.OAuthProvider('microsoft.com');
   auth.signInWithPopup(provider)
-    .then(() => alert("✅ Logged in with Microsoft!"))
-    .catch((error) => alert("Error: " + error.message));
+    .then(() => document.getElementById("status").innerHTML = "✅ Microsoft Login Successful")
+    .catch(error => document.getElementById("status").innerHTML = error.message);
 }
 
 function twitterLogin() {
   const provider = new firebase.auth.TwitterAuthProvider();
   auth.signInWithPopup(provider)
-    .then(() => alert("✅ Logged in with Twitter!"))
-    .catch((error) => alert("Error: " + error.message));
+    .then(() => document.getElementById("status").innerHTML = "✅ Twitter Login Successful")
+    .catch(error => document.getElementById("status").innerHTML = error.message);
 }
-
-// Optional: Show user info when already logged in
-auth.onAuthStateChanged(user => {
-  if (user) {
-    document.getElementById("user-info").innerHTML = `Logged in as: ${user.email || user.displayName}`;
-  }
-});
