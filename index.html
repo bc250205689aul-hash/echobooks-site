@@ -9,36 +9,22 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
   
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-    button {
-      padding: 12px 20px;
-      margin: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .google { background: #DB4437; color: white; }
-    .apple  { background: #000; color: white; }
-    .microsoft { background: #00A4EF; color: white; }
-    .twitter { background: #1DA1F2; color: white; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <h1>📖 EchoBooks</h1>
+    <p>Welcome! Sign in to access community and audiobook features.</p>
 
-  <h1>Welcome to EchoBooks</h1>
-  <p>Sign in to upload books and use Audiobook feature</p>
+    <div class="login-box">
+      <button onclick="googleLogin()" class="btn google">Login with Google</button>
+      <button onclick="appleLogin()" class="btn apple">Login with Apple</button>
+      <button onclick="microsoftLogin()" class="btn microsoft">Login with Microsoft</button>
+      <button onclick="twitterLogin()" class="btn twitter">Login with Twitter</button>
+    </div>
 
-  <!-- Login Buttons Go Here -->
-  <div>
-    <button class="google" onclick="googleLogin()">Login with Google</button><br>
-    <button class="apple" onclick="appleLogin()">Login with Apple</button><br>
-    <button class="microsoft" onclick="microsoftLogin()">Login with Microsoft</button><br>
-    <button class="twitter" onclick="twitterLogin()">Login with Twitter</button><br>
+    <p id="status"></p>
   </div>
-
-  <p id="user-info"></p>
 
   <script src="script.js"></script>
 </body>
